@@ -90,7 +90,7 @@
         <div class="post-title">常用算法</div>
         <div class="post-info">
           
-  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tag">#算法</a>
+  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tag">#算法</a><a href="/tags/%E6%9F%A5%E6%89%BE/" class="post-tag">#查找</a>
 
 
           <span class="post-date">2024-01-07</span>
@@ -103,7 +103,46 @@
             
           </div>
         
-        
+        <p>###<strong>二分查找</strong></p>
+<ul>
+<li>min和max表示要查找的范围</li>
+<li>min是在min和max中间</li>
+<li>如果查找的范围是min的左边，max&#x3D;mid-1</li>
+<li>如果查找的范围是min的右边，min&#x3D;mid+1</li>
+</ul>
+<p>改进（插值查找）：<img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081120860.png"><br>###<strong>分块查找</strong></p>
+<ul>
+<li>原则一：块内无序，块间有序</li>
+<li>原则二：块数&#x3D;数字个数开根</li>
+<li>核心思路：先查找属于哪个块，然后在块内查找<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081127119.png"></li>
+</ul>
+<p>###<strong>冒泡排序</strong></p>
+<ul>
+<li>两两比较</li>
+<li>n-1轮，每轮找最大值</li>
+</ul>
+<p>###<strong>选择排序</strong></p>
+<ul>
+<li>从0索引开始，拿着每一个索引上的元素跟后面的元素依次比较，<br>必的放前面，大的放后面，以此类推;</li>
+</ul>
+<p>###<strong>插入排序</strong></p>
+<ul>
+<li>将0索引的元素到N索引的元素看做是有序的，把N+1索引的元素到最后一个当成是无序的；</li>
+<li>遍历无序的数据，将遍历到的元素插入有序序列中适当的位置，如遇到相同数据，插在后面；</li>
+</ul>
+<p>###<strong>快速排序</strong></p>
+<ul>
+<li>第一轮：把0索引的数字作为基准数，确定基准数在数组中正确的位置，<br>比基准数小的全部在左边，比基准数大的全部在右边；</li>
+<li>先写end，后写start;</li>
+</ul>
+<p>###<strong>常见算法的API</strong></p>
+<ul>
+<li><p><strong>Arrays</strong><br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081323492.png"></p>
+</li>
+<li><p>sort()方法只会给引用数据类型的数组排序，底层实现：插入排序+二分查找 需要重写Comparator接口的compare方法，通常用匿名内部类实现</p>
+</li>
+</ul>
+
       </div>
     </div>
   </article>
@@ -135,7 +174,7 @@
     
       <div class="related-post">
   <div class="related__head">
-  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tag">#算法</a>
+  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tag">#算法</a><a href="/tags/%E6%9F%A5%E6%89%BE/" class="post-tag">#查找</a>
 
 </div>
   <div class="realated__body">
