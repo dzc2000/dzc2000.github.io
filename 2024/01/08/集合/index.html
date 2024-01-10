@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
     <title>
       
-        常用API | 饿了
+        集合 | 饿了
       
     </title>
     <meta name="description" content=""/>
@@ -87,13 +87,13 @@
   <article class="post-content">
     <div class="post-inner">
       <div class="post-content__head">
-        <div class="post-title">常用API</div>
+        <div class="post-title">集合</div>
         <div class="post-info">
           
-  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/API/" class="post-tag">#API</a>
+  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-tag">#数据结构</a>
 
 
-          <span class="post-date">2024-01-06</span>
+          <span class="post-date">2024-01-08</span>
         </div>
       </div>
       
@@ -103,9 +103,55 @@
             
           </div>
         
-        <p><strong>Date</strong><br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072038501.png"><br /><strong>SimpleDateFormat</strong><br />格式化，解析<br />指定格式<br />yyyy年MM月dd日 HH:mm:ss<br /><strong>Calendar</strong><br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072038276.png"><br />表示日历对象 通过getinstance()获取<br /><strong>JDK8时间类</strong><br /><strong>ZoneId时区</strong><br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072039551.png"><br /><strong>Instant时间戳</strong><br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072039642.png"><br /><strong>ZonedDateTime</strong><br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072039850.png"><br /><strong>DateTimeFormatter</strong><br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072040419.png"><br /><strong>LocalDate , LocalTime, LocalDateTime</strong><br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072040796.png"><br /><strong>包装类</strong><br />基本数据类型对应的对象<br />自动装箱、自动拆箱<br />不需要new，不需要调用方法，直接赋值即可<br />Integer.valueof 超过-128~127会新建对象<br /><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401072040272.png"></p>
-<br />
-
+        <ul>
+<li>List系列集合：有序，可重复，有索引</li>
+<li>Set系列集合：无序，不重复，无索引</li>
+</ul>
+<p><strong>Collection</strong><br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081440044.png"></p>
+<ul>
+<li>contains对象一定要重写equals方法</li>
+</ul>
+<p><strong>Collection遍历方式</strong></p>
+<ul>
+<li><p>迭代器遍历: Iterator<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081459437.png"><br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081459608.png"></p>
+</li>
+<li><p>迭代器遍历完毕，指针不会复位</p>
+</li>
+<li><p>迭代器遍历时，不能用集合的方法进行增加或删除</p>
+</li>
+<li><p>增强for遍历：底层为Iterator迭代器<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081511146.png"></p>
+</li>
+<li><p>lambda表达式遍历: forEach()方法</p>
+</li>
+</ul>
+<p><strong>List集合</strong><br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401081518299.png"></p>
+<ul>
+<li>遍历方式<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401091924927.png"></li>
+</ul>
+<p><strong>ArrayList底层原理</strong></p>
+<ul>
+<li>利用空参创建的集合，在底层创建一个默认长度为0的数组</li>
+<li>添加第一个元素时，底层会创建一个新的长度为10的数组</li>
+<li>存满时，会扩充为1.5倍</li>
+<li>如果一次添加多个元素，1.5倍还放不下，则创建数组的长度以实际为准</li>
+</ul>
+<p><strong>LinkedList底层原理</strong></p>
+<ul>
+<li>双向链表，查询慢，增删快</li>
+<li>多个首尾元素API<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401091946696.png"></li>
+</ul>
+<p><strong>泛型</strong></p>
+<ul>
+<li><p>泛型类<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401092027015.png"></p>
+</li>
+<li><p>泛型方法: 方法中形参类型不确定时，使用类名后面定义的泛型；在方法声明上加上自己的泛型；<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401092032176.png"></p>
+</li>
+<li><p>泛型接口：实现类给出具体的泛型；实现类延续泛型<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202401092034436.png"></p>
+</li>
+<li><p>泛型不具备继承，通配符：?，有两种用法：? extends E; ? super E: 可以限定类型的范围</p>
+</li>
+</ul>
+<p><strong>树</strong></p>
 
       </div>
     </div>
@@ -114,23 +160,11 @@
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/2024/01/07/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/">
-      <div class="text-align">
-        <svg t="1670570876164"
-             class="icon"
-             viewBox="0 0 1024 1024"
-             width="16"
-             height="16">
-          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
-        </svg>
-        <span class="text-small">上一篇</span>
-      </div>
-      <div>常用算法</div>
-    </a>
+    <div class="post-nav-item-left"></div>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/2024/01/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+    <a class="post-nav-item-right" href="/2024/01/08/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -142,7 +176,7 @@
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
         </svg>
       </div>
-      正则表达式
+      lambda表达式
     </a>
   
 </div>
@@ -150,12 +184,12 @@
     
       <div class="related-post">
   <div class="related__head">
-  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/API/" class="post-tag">#API</a>
+  <a href="/tags/java/" class="post-tag">#java</a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-tag">#数据结构</a>
 
 </div>
   <div class="realated__body">
     
-      <div class="null"><div class="null-item"><div class="null-title"><a href="/2024/01/07/常用算法/" title="常用算法" rel="bookmark">常用算法</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/06/正则表达式/" title="正则表达式" rel="bookmark">正则表达式</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/08/lambda表达式/" title="lambda表达式" rel="bookmark">lambda表达式</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/08/集合/" title="集合" rel="bookmark">集合</a></div></div></div>
+      <div class="null"><div class="null-item"><div class="null-title"><a href="/2024/01/06/常用API/" title="常用API" rel="bookmark">常用API</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/07/常用算法/" title="常用算法" rel="bookmark">常用算法</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/06/正则表达式/" title="正则表达式" rel="bookmark">正则表达式</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/08/lambda表达式/" title="lambda表达式" rel="bookmark">lambda表达式</a></div></div></div>
     
   </div>
 </div>
