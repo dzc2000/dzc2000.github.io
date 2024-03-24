@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        框架篇 | 饿了
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/java">技术</a>
+            
+              <a class="nav-menu-item" href="/paper">论文</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">框架篇</div>
+        <div class="post-info">
+          
+  <a href="/tags/Spring-SpringMVC-SpringBoot-Mybatis/" class="post-tag">#Spring, SpringMVC, SpringBoot, Mybatis</a>
+
+
+          <span class="post-date">2024-03-14</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <p>#Spring<br>##IoC (控制反转）<br>在Spring中，创建对象的工作不再由应用程序主动完成，而是由Spring容器负责创建，然后注入给应用程序，由Spring来管理应用程序中的所有对象及其依赖关系<br>##DI (依赖注入）<br>DI 是指在组件之间传递依赖关系的过程中，将依赖关系在容器内部进行处理，这样就不必在应用程序代码中硬编码对象之间的依赖关系，实现了对象之间的解耦合。在 Spring 中，DI 是通过 XML 配置文件或注解的方式实现的。它提供了三种形式的依赖注入：构造函数注入、Setter 方法注入和接口注入。<br>##BeanFactory与ApplicationContext的关系<br><code>BeanFactory</code> 接口提供了一种高级配置机制，能够管理任何类型的对象，它是SpringIoC容器标准化超接口！</p>
+<p><code>ApplicationContext</code> 是 <code>BeanFactory</code> 的子接口。它扩展了以下功能：</p>
+<ul>
+<li>更容易与 Spring 的 AOP 功能集成</li>
+<li>消息资源处理（用于国际化）</li>
+<li>特定于应用程序给予此接口实现，例如Web 应用程序的 <code>WebApplicationContext</code></li>
+</ul>
+<p>简而言之， <code>BeanFactory</code> 提供了配置框架和基本功能，而 <code>ApplicationContext</code> 添加了更多特定于企业的功能。 <code>ApplicationContext</code> 是 <code>BeanFactory</code> 的完整超集</p>
+<p>##Bean的作用域</p>
+<ol>
+<li><p>Bean作用域概念<br> <code>&lt;bean</code> 标签声明Bean，只是将Bean的信息配置给SpringIoC容器！<br> 在IoC容器中，这些<code>&lt;bean</code>标签对应的信息转成Spring内部 <code>BeanDefinition</code> 对象，<code>BeanDefinition</code> 对象内，包含定义的信息（id,class,属性等等）！</p>
+<p> 这意味着，<code>BeanDefinition</code>与<code>类</code>概念一样，SpringIoC容器可以可以根据<code>BeanDefinition</code>对象反射创建多个Bean对象实例。</p>
+<p> 具体创建多少个Bean的实例对象，由Bean的作用域Scope属性指定！</p>
+</li>
+<li><p>作用域可选值</p>
+</li>
+</ol>
+<p>singleton在 IOC 容器中，这个 bean 的对象始终为单实例, 创建时机：IOC 容器初始化时 默认值：是<br>prototype这个 bean 在 IOC 容器中有多个实例，创建时机：获取 bean 时 默认值：否</p>
+<p>##FactoryBean<br><code>FactoryBean</code> 接口是Spring IoC容器实例化逻辑的可插拔性点。</p>
+<p>用于配置复杂的Bean对象，可以将创建过程存储在<code>FactoryBean</code> 的getObject方法！</p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142138374.png"></p>
+<p><strong>FactoryBean</strong> 是 Spring 中一种特殊的 bean，可以在 getObject() 工厂方法自定义的逻辑创建Bean！是一种能够生产其他 Bean 的 Bean。FactoryBean 在容器启动时被创建，而在实际使用时则是通过调用 getObject() 方法来得到其所生产的 Bean。因此，FactoryBean 可以自定义任何所需的初始化逻辑，生产出一些定制化的 bean。</p>
+<p>一般情况下，整合第三方框架，都是通过定义FactoryBean实现！！！</p>
+<p><strong>BeanFactory</strong> 是 Spring 框架的基础，其作为一个顶级接口定义了容器的基本行为，例如管理 bean 的生命周期、配置文件的加载和解析、bean 的装配和依赖注入等。BeanFactory 接口提供了访问 bean 的方式，例如 getBean() 方法获取指定的 bean 实例。它可以从不同的来源（例如 Mysql 数据库、XML 文件、Java 配置类等）获取 bean 定义，并将其转换为 bean 实例。同时，BeanFactory 还包含很多子类（例如，ApplicationContext 接口）提供了额外的强大功能。</p>
+<p>总的来说，FactoryBean 和 BeanFactory 的区别主要在于前者是用于创建 bean 的接口，它提供了更加灵活的初始化定制功能，而后者是用于管理 bean 的框架基础接口，提供了基本的容器功能和 bean 生命周期管理</p>
+<p>##常用组件</p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142143326.png"></p>
+<h2 id="Autowired-自动装配"><a href="#Autowired-自动装配" class="headerlink" title="Autowired 自动装配"></a>Autowired 自动装配</h2><ol>
+<li><p>前提</p>
+<p> 参与自动装配的组件（需要装配、被装配）全部都必须在IoC容器中。</p>
+<p> 注意：不区分IoC的方式！XML和注解都可以！</p>
+</li>
+<li><p>@Autowired注解</p>
+<p> 在成员变量上直接标记@Autowired注解即可，不需要提供setXxx()方法。以后我们在项目中的正式用法就是这样。</p>
+<p> <img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142145340.png"></p>
+</li>
+</ol>
+<h2 id="配置类和扫描注解"><a href="#配置类和扫描注解" class="headerlink" title="配置类和扫描注解"></a>配置类和扫描注解</h2><p>@Configuration指定一个类为配置类，可以添加配置注解，替代配置xml文件</p>
+<p>@ComponentScan(basePackages &#x3D; {“包”,”包”}) 替代&lt;context:component-scan标签实现注解扫描</p>
+<p>@PropertySource(“classpath:配置文件地址”) 替代 &lt;context:property-placeholder标签</p>
+<h2 id="三种配置总结"><a href="#三种配置总结" class="headerlink" title="三种配置总结"></a>三种配置总结</h2><h4 id="XML方式配置总结"><a href="#XML方式配置总结" class="headerlink" title="XML方式配置总结"></a>XML方式配置总结</h4><ol>
+<li>所有内容写到xml格式配置文件中</li>
+<li>声明bean通过&lt;bean标签</li>
+<li>&lt;bean标签包含基本信息（id,class）和属性信息 &lt;property name value &#x2F; ref</li>
+<li>引入外部的properties文件可以通过&lt;context:property-placeholder</li>
+<li>IoC具体容器实现选择ClassPathXmlApplicationContext对象</li>
+</ol>
+<h4 id="XML-注解方式配置总结"><a href="#XML-注解方式配置总结" class="headerlink" title="XML+注解方式配置总结"></a>XML+注解方式配置总结</h4><ol>
+<li>注解负责标记IoC的类和进行属性装配</li>
+<li>xml文件依然需要，需要通过&lt;context:component-scan标签指定注解范围</li>
+<li>标记IoC注解：@Component,@Service,@Controller,@Repository </li>
+<li>标记DI注解：@Autowired @Qualifier @Resource @Value</li>
+<li>IoC具体容器实现选择ClassPathXmlApplicationContext对象</li>
+</ol>
+<h4 id="完全注解方式配置总结"><a href="#完全注解方式配置总结" class="headerlink" title="完全注解方式配置总结"></a>完全注解方式配置总结</h4><ol>
+<li>完全注解方式指的是去掉xml文件，使用配置类 + 注解实现</li>
+<li>xml文件替换成使用@Configuration注解标记的类</li>
+<li>标记IoC注解：@Component,@Service,@Controller,@Repository </li>
+<li>标记DI注解：@Autowired @Qualifier @Resource @Value</li>
+<li>&lt;context:component-scan标签指定注解范围使用@ComponentScan(basePackages &#x3D; {“com.atguigu.components”})替代</li>
+<li>&lt;context:property-placeholder引入外部配置文件使用@PropertySource({“classpath:application.properties”,”classpath:jdbc.properties”})替代</li>
+<li>&lt;bean 标签使用@Bean注解和方法实现</li>
+<li>IoC具体容器实现选择AnnotationConfigApplicationContext对象</li>
+</ol>
+<h2 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP 面向切面编程"></a>AOP 面向切面编程</h2><ul>
+<li>代理：将非核心逻辑剥离出来以后，封装这些非核心逻辑的类、对象、方法。(中介)<ul>
+<li>动词：指做代理这个动作，或这项工作</li>
+<li>名词：扮演代理这个角色的类、对象、方法</li>
+</ul>
+</li>
+<li>目标：<strong>被代理</strong>“套用”了核心逻辑代码的类、对象、方法。(房东)</li>
+</ul>
+<p>代理在开发中实现的方式具体有两种：静态代理，[动态代理技术]</p>
+<p>AOP（面向切面编程）是一种编程范式，它通过将通用的横切关注点（如日志、事务、权限控制等）与业务逻辑分离，使得代码更加清晰、简洁、易于维护。AOP可以应用于各种场景，以下是一些常见的AOP应用场景：</p>
+<ol>
+<li>日志记录：在系统中记录日志是非常重要的，可以使用AOP来实现日志记录的功能，可以在方法执行前、执行后或异常抛出时记录日志。</li>
+<li>事务处理：在数据库操作中使用事务可以保证数据的一致性，可以使用AOP来实现事务处理的功能，可以在方法开始前开启事务，在方法执行完毕后提交或回滚事务。</li>
+<li>安全控制：在系统中包含某些需要安全控制的操作，如登录、修改密码、授权等，可以使用AOP来实现安全控制的功能。可以在方法执行前进行权限判断，如果用户没有权限，则抛出异常或转向到错误页面，以防止未经授权的访问。</li>
+<li>性能监控：在系统运行过程中，有时需要对某些方法的性能进行监控，以找到系统的瓶颈并进行优化。可以使用AOP来实现性能监控的功能，可以在方法执行前记录时间戳，在方法执行完毕后计算方法执行时间并输出到日志中。</li>
+<li>异常处理：系统中可能出现各种异常情况，如空指针异常、数据库连接异常等，可以使用AOP来实现异常处理的功能，在方法执行过程中，如果出现异常，则进行异常处理（如记录日志、发送邮件等）。</li>
+<li>缓存控制：在系统中有些数据可以缓存起来以提高访问速度，可以使用AOP来实现缓存控制的功能，可以在方法执行前查询缓存中是否有数据，如果有则返回，否则执行方法并将方法返回值存入缓存中。</li>
+<li>动态代理：AOP的实现方式之一是通过动态代理，可以代理某个类的所有方法，用于实现各种功能。</li>
+</ol>
+<p>综上所述，AOP可以应用于各种场景，它的作用是将通用的横切关注点与业务逻辑分离，使得代码更加清晰、简洁、易于维护。</p>
+<p>AOP把软件系统分为两个部分：核心关注点和横切关注点。业务处理的主要流程是核心关注点，与之关系不大的部分是横切关注点。横切关注点的一个特点是，他们经常发生在核心关注点的多处，而各处基本相似，比如权限认证、日志、事务、异常等。AOP的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来。</p>
+<p>每一个横切关注点上要做的事情都需要写一个方法来实现，这样的方法就叫通知方法。</p>
+<ul>
+<li>前置通知：在被代理的目标方法前执行</li>
+<li>返回通知：在被代理的目标方法成功结束后执行</li>
+<li>异常通知：在被代理的目标方法异常结束后执行</li>
+<li>后置通知：在被代理的目标方法最终结束后执行</li>
+<li>环绕通知：使用try…catch…finally结构围绕整个被代理的目标方法，包括上面四种通知对应的所有位置</li>
+</ul>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142205885.png"></p>
+<p>切入点 pointcut</p>
+<p>定位连接点的方式，或者可以理解成被选中的连接点！</p>
+<p>是一个表达式，比如execution(* com.spring.service.impl.<em>.</em>(..))。符合条件的每个方法都是一个具体的连接点。</p>
+<p>切面 aspect</p>
+<p>切入点和通知的结合。是一个类。<br><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142206391.png"></p>
+<h3 id="底层结构"><a href="#底层结构" class="headerlink" title="底层结构"></a>底层结构</h3><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142207731.png"></p>
+<ul>
+<li>动态代理（InvocationHandler）：JDK原生的实现方式，需要被代理的目标类必须实现接口。因为这个技术要求代理对象和目标对象实现同样的接口。</li>
+<li>cglib：通过继承被代理的目标类实现代理，所以不需要目标类实现接口。</li>
+<li>AspectJ：早期的AOP实现的框架，SpringAOP借用了AspectJ中的AOP注解。</li>
+</ul>
+<h3 id="切点表达式"><a href="#切点表达式" class="headerlink" title="切点表达式"></a>切点表达式</h3><p> AOP切点表达式（Pointcut Expression）是一种用于指定切点的语言，它可以通过定义匹配规则，来选择需要被切入的目标对象。</p>
+<p> <img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142211896.png"></p>
+<h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><p>环绕通知对应整个 try…catch…finally 结构，包括前面四种通知的所有功能。</p>
+<ol>
+<li><p>情景一</p>
+<ul>
+<li>bean 对应的类没有实现任何接口</li>
+<li>根据 bean 本身的类型获取 bean<ul>
+<li><p>测试：IOC容器中同类型的 bean 只有一个</p>
+<p>  正常获取到 IOC 容器中的那个 bean 对象</p>
+</li>
+<li><p>测试：IOC 容器中同类型的 bean 有多个</p>
+<p>  会抛出 NoUniqueBeanDefinitionException 异常，表示 IOC 容器中这个类型的 bean 有多个</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>情景二</p>
+<ul>
+<li>bean 对应的类实现了接口，这个接口也只有这一个实现类<ul>
+<li>测试：根据接口类型获取 bean</li>
+<li>测试：根据类获取 bean</li>
+<li>结论：上面两种情况其实都能够正常获取到 bean，而且是同一个对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>情景三</p>
+<ul>
+<li>声明一个接口</li>
+<li>接口有多个实现类</li>
+<li>接口所有实现类都放入 IOC 容器<ul>
+<li><p>测试：根据接口类型获取 bean</p>
+<p>  会抛出 NoUniqueBeanDefinitionException 异常，表示 IOC 容器中这个类型的 bean 有多个</p>
+</li>
+<li><p>测试：根据类获取bean</p>
+<p>  正常</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>情景四</p>
+<ul>
+<li>声明一个接口</li>
+<li>接口有一个实现类</li>
+<li>创建一个切面类，对上面接口的实现类应用通知<ul>
+<li><p>测试：根据接口类型获取bean</p>
+<p>  正常</p>
+</li>
+<li><p>测试：根据类获取bean</p>
+<p>  无法获取</p>
+</li>
+</ul>
+</li>
+</ul>
+<p> 原因分析：</p>
+<ul>
+<li>应用了切面后，真正放在IOC容器中的是代理类的对象</li>
+<li>目标类并没有被放到IOC容器中，所以根据目标类的类型从IOC容器中是找不到的</li>
+</ul>
+</li>
+</ol>
+<p> <img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403142218582.png"></p>
+<h2 id="声明式事务"><a href="#声明式事务" class="headerlink" title="声明式事务"></a>声明式事务</h2><ul>
+<li>编程式事务需要手动编写代码来管理事务</li>
+<li>而声明式事务可以通过配置文件或注解来控制事务。</li>
+</ul>
+<ol>
+<li><p>Spring声明式事务对应依赖</p>
+<ul>
+<li>spring-tx: 包含声明式事务实现的基本规范（事务管理器规范接口和事务增强等等）</li>
+<li>spring-jdbc: 包含DataSource方式事务管理器实现类DataSourceTransactionManager</li>
+<li>spring-orm: 包含其他持久层框架的事务管理器实现类例如：Hibernate&#x2F;Jpa等</li>
+</ul>
+</li>
+<li><p>Spring声明式事务对应事务管理器接口</p>
+<p> <img src="https://secure2.wostatic.cn/static/cTpSy6E9Vzq4H8i1x7MLEf/image.png?auth_key=1710425995-tnNUkFtmmUx9Wr4odSap9w-0-0a5b54d7cf644f25c421dce2e10c87d7"></p>
+<p> 我们现在要使用的事务管理器是org.springframework.jdbc.datasource.DataSourceTransactionManager，将来整合 JDBC方式、JdbcTemplate方式、Mybatis方式的事务实现！</p>
+<p> DataSourceTransactionManager类中的主要方法：</p>
+<ul>
+<li>doBegin()：开启事务</li>
+<li>doSuspend()：挂起事务</li>
+<li>doResume()：恢复挂起的事务</li>
+<li>doCommit()：提交事务</li>
+<li>doRollback()：回滚事务</li>
+</ul>
+</li>
+</ol>
+<h3 id="事务属性：只读"><a href="#事务属性：只读" class="headerlink" title="事务属性：只读"></a>事务属性：只读</h3><ol>
+<li><p>只读介绍</p>
+<p> 对一个查询操作来说，如果我们把它设置成只读，就能够明确告诉数据库，这个操作不涉及写操作。这样数据库就能够针对查询操作来进行优化。</p>
+</li>
+<li><p>设置方式</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">// readOnly = true把当前事务设置为只读 默认是false!</span><br><span class="hljs-meta">@Transactional(readOnly = true)</span><br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>针对DML动作设置只读模式</p>
+<p> 会抛出下面异常：</p>
+<p> Caused by: java.sql.SQLException: Connection is read-only. Queries leading to data modification are not allowed</p>
+</li>
+<li><p>@Transactional注解放在类上</p>
+<ol>
+<li><p>生效原则</p>
+<p> 如果一个类中每一个方法上都使用了 @Transactional 注解，那么就可以将 @Transactional 注解提取到类上。反过来说：@Transactional 注解在类级别标记，会影响到类中的每一个方法。同时，类级别标记的 @Transactional 注解中设置的事务属性也会延续影响到方法执行时的事务属性。除非在方法上又设置了 @Transactional 注解。</p>
+<p> 对一个方法来说，离它最近的 @Transactional 注解中的事务属性设置生效。</p>
+</li>
+<li><p>用法举例</p>
+<p> 在类级别@Transactional注解中设置只读，这样类中所有的查询方法都不需要设置@Transactional注解了。因为对查询操作来说，其他属性通常不需要设置，所以使用公共设置即可。</p>
+<p> 然后在这个基础上，对增删改方法设置@Transactional注解 readOnly 属性为 false。</p>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-meta">@Service</span><br><span class="hljs-meta">@Transactional(readOnly = true)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">EmpService</span> &#123;<br>    <br>    <span class="hljs-comment">// 为了便于核对数据库操作结果，不要修改同一条记录</span><br>    <span class="hljs-meta">@Transactional(readOnly = false)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateTwice</span><span class="hljs-params">(……)</span> &#123;<br>    ……<br>    &#125;<br>    <br>    <span class="hljs-comment">// readOnly = true把当前事务设置为只读</span><br>    <span class="hljs-comment">// @Transactional(readOnly = true)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEmpName</span><span class="hljs-params">(Integer empId)</span> &#123;<br>    ……<br>    &#125;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-2-4-事务属性：超时时间"><a href="#6-2-4-事务属性：超时时间" class="headerlink" title="6.2.4 事务属性：超时时间"></a>6.2.4 事务属性：超时时间</h4><ol>
+<li><p>需求</p>
+<p> 事务在执行过程中，有可能因为遇到某些问题，导致程序卡住，从而长时间占用数据库资源。而长时间占用资源，大概率是因为程序运行出现了问题（可能是Java程序或MySQL数据库或网络连接等等）。</p>
+<p> 此时这个很可能出问题的程序应该被回滚，撤销它已做的操作，事务结束，把资源让出来，让其他正常程序可以执行。</p>
+<p> 概括来说就是一句话：超时回滚，释放资源。</p>
+</li>
+<li><p>设置超时时间</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StudentService</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> StudentDao studentDao;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * timeout设置事务超时时间,单位秒! 默认: -1 永不超时,不限制事务时间!</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Transactional(readOnly = false,timeout = 3)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changeInfo</span><span class="hljs-params">()</span>&#123;<br>        studentDao.updateAgeById(<span class="hljs-number">100</span>,<span class="hljs-number">1</span>);<br>        <span class="hljs-comment">//休眠4秒,等待方法超时!</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            Thread.sleep(<span class="hljs-number">4000</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>        &#125;<br>        studentDao.updateNameById(<span class="hljs-string">&quot;test1&quot;</span>,<span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>测试超时效果</p>
+<p> 执行抛出事务超时异常</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Java">org.springframework.transaction.TransactionTimedOutException: Transaction timed out: deadline was Wed May <span class="hljs-number">24</span> 09:<span class="hljs-number">10</span>:<span class="hljs-number">43</span> IRKT <span class="hljs-number">2023</span><br><br>  at org.springframework.transaction.support.ResourceHolderSupport.checkTransactionTimeout(ResourceHolderSupport.java:<span class="hljs-number">155</span>)<br>  at org.springframework.transaction.support.ResourceHolderSupport.getTimeToLiveInMillis(ResourceHolderSupport.java:<span class="hljs-number">144</span>)<br>  at org.springframework.transaction.support.ResourceHolderSupport.getTimeToLiveInSeconds(ResourceHolderSupport.java:<span class="hljs-number">128</span>)<br>  at org.springframework.jdbc.datasource.DataSourceUtils.applyTimeout(DataSourceUtils.java:<span class="hljs-number">341</span>)<br>  at org.springframework.jdbc.core.JdbcTemplate.applyStatementSettings(JdbcTemplate.java:<span class="hljs-number">1467</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="事务属性：事务隔离级别"><a href="#事务属性：事务隔离级别" class="headerlink" title="事务属性：事务隔离级别"></a>事务属性：事务隔离级别</h3><ol>
+<li><p>事务隔离级别</p>
+<p> 数据库事务的隔离级别是指在多个事务并发执行时，数据库系统为了保证数据一致性所遵循的规定。常见的隔离级别包括：</p>
+<ol>
+<li>读未提交（Read Uncommitted）：事务可以读取未被提交的数据，容易产生脏读、不可重复读和幻读等问题。实现简单但不太安全，一般不用。</li>
+<li>读已提交（Read Committed）：事务只能读取已经提交的数据，可以避免脏读问题，但可能引发不可重复读和幻读。</li>
+<li>可重复读（Repeatable Read）：在一个事务中，相同的查询将返回相同的结果集，不管其他事务对数据做了什么修改。可以避免脏读和不可重复读，但仍有幻读的问题。</li>
+<li>串行化（Serializable）：最高的隔离级别，完全禁止了并发，只允许一个事务执行完毕之后才能执行另一个事务。可以避免以上所有问题，但效率较低，不适用于高并发场景。</li>
+</ol>
+<p> 不同的隔离级别适用于不同的场景，需要根据实际业务需求进行选择和调整。</p>
+</li>
+</ol>
+<h3 id="事务传播行为"><a href="#事务传播行为" class="headerlink" title="事务传播行为"></a>事务传播行为</h3><ol>
+<li><p>propagation属性</p>
+<p> @Transactional 注解通过 propagation 属性设置事务的传播行为。</p>
+<p> 在同一个类中，对于@Transactional注解的方法调用，事务传播行为不会生效。这是因为Spring框架中使用代理模式实现了事务机制，在同一个类中的方法调用并不经过代理，而是通过对象的方法调用，因此@Transactional注解的设置不会被代理捕获，也就不会产生任何事务传播行为的效果。</p>
+</li>
+</ol>
+<h2 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h2>
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2024/03/21/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E7%9A%84RPC%E6%A1%86%E6%9E%B6/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>自定义协议的RPC框架</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/17/maven/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      maven
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/Spring-SpringMVC-SpringBoot-Mybatis/" class="post-tag">#Spring, SpringMVC, SpringBoot, Mybatis</a>
+
+</div>
+  <div class="realated__body">
+    
+      <div class="null"><div class="null-item"><div class="null-title"><a href="/2024/01/15/IO流/" title="IO流" rel="bookmark">IO流</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/15/Stream流/" title="Stream流" rel="bookmark">Stream流</a></div></div></div>
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">海</div>
+              
+                <div class="matts">内</div>
+              
+                <div class="matts">存</div>
+              
+                <div class="matts">知</div>
+              
+                <div class="matts">己</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">天</div>
+              
+                <div class="matts">涯</div>
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">比</div>
+              
+                <div class="matts">邻</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://jtzhpf.github.io">帅哥</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://nuistgy.github.io">kami</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:dzc2000919@gmail.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/dzc2000">dzc2000</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:dzc2000919@gmail.com">dzc2000919@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://dzc2000.github.io">饿了</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
