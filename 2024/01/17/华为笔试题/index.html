@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        华为笔试题 | 饿了
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/java">技术</a>
+            
+              <a class="nav-menu-item" href="/paper">论文</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">华为笔试题</div>
+        <div class="post-info">
+          
+  <a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tag">#算法</a>
+
+
+          <span class="post-date">2024-01-17</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h2 id="70-爬楼梯"><a href="#70-爬楼梯" class="headerlink" title="70. 爬楼梯"></a>70. 爬楼梯</h2><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。<br>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int climbStairs(int n) &#123;<br>        int[] dp = new int[n+1];<br>        dp[0] = 1;<br>        dp[1] = 1;<br>        for(int i = 2;i&lt;=n;i++)&#123;<br>            dp[i] = dp[i-1]+dp[i-2];<br>        &#125;<br><br>        return dp[n];<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="112-路经总和"><a href="#112-路经总和" class="headerlink" title="112. 路经总和"></a>112. 路经总和</h2><p>给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">/**<br> * Definition for a binary tree node.<br> * public class TreeNode &#123;<br> *     int val;<br> *     TreeNode left;<br> *     TreeNode right;<br> *     TreeNode() &#123;&#125;<br> *     TreeNode(int val) &#123; this.val = val; &#125;<br> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;<br> *         this.val = val;<br> *         this.left = left;<br> *         this.right = right;<br> *     &#125;<br> * &#125;<br> */<br>class Solution &#123;<br>    public boolean hasPathSum(TreeNode root, int targetSum) &#123;<br>        if(root==null)<br>            return false;<br>        if(root.left==null &amp;&amp; root.right==null)<br>            return root.val == targetSum;<br><br>        return hasPathSum(root.left, targetSum-root.val) || hasPathSum(root.right, targetSum-root.val);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="509-斐波那契数"><a href="#509-斐波那契数" class="headerlink" title="509. 斐波那契数"></a>509. 斐波那契数</h2><p>斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<p>F(0) &#x3D; 0，F(1) &#x3D; 1<br>F(n) &#x3D; F(n - 1) + F(n - 2)，其中 n &gt; 1<br>给定 n ，请计算 F(n) 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int fib(int n) &#123;<br>        if(n&lt;2)<br>            return n;<br>        int[] num = new int[n+1];<br>        num[0]=0;<br>        num[1]=1;<br>        for(int i=2;i&lt;=n;i++)&#123;<br>            num[i]=num[i-1]+num[i-2];<br>        &#125;<br>        return num[n];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="23-合并k个有序链表"><a href="#23-合并k个有序链表" class="headerlink" title="23. 合并k个有序链表"></a>23. 合并k个有序链表</h2><p>给你一个链表数组，每个链表都已经按升序排列。</p>
+<p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">/**<br> * Definition for singly-linked list.<br> * public class ListNode &#123;<br> *     int val;<br> *     ListNode next;<br> *     ListNode() &#123;&#125;<br> *     ListNode(int val) &#123; this.val = val; &#125;<br> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;<br> * &#125;<br> */<br>class Solution &#123;<br>    public ListNode mergeKLists(ListNode[] lists) &#123;<br>        int n = lists.length;<br>        ListNode ans = null;<br>        for(int i=0;i&lt;n;i++)&#123;<br>            ans = mergeTwoLists(ans, lists[i]);<br>        &#125;<br><br>        return ans;<br>    &#125;<br><br>    public ListNode mergeTwoLists(ListNode a, ListNode b)&#123;<br>        if (a == null || b == null) &#123;<br>        return a != null ? a : b;<br>        &#125;<br><br>        ListNode head = new ListNode(0);<br>        ListNode tail = head, aPtr = a, bPtr = b;<br><br>        while(aPtr!=null&amp;&amp;bPtr!=null)&#123;<br>            if(aPtr.val&lt;bPtr.val)&#123;<br>                tail.next = aPtr;<br>                aPtr = aPtr.next;<br>            &#125;else&#123;<br>                tail.next = bPtr;<br>                bPtr = bPtr.next;<br>            &#125;<br>            tail = tail.next;<br>        &#125;<br><br>        tail.next = (aPtr!=null)?aPtr:bPtr;<br>        return head.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="169-多数元素"><a href="#169-多数元素" class="headerlink" title="169. 多数元素"></a>169. 多数元素</h2><p>给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n&#x2F;2 ⌋ 的元素。</p>
+<p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    private int countInRange(int[] nums, int num, int lo, int hi) &#123;<br>        int count = 0;<br>        for (int i = lo; i &lt;= hi; i++) &#123;<br>            if (nums[i] == num) &#123;<br>                count++;<br>            &#125;<br>        &#125;<br>        return count;<br>    &#125;<br><br>    private int majorityElementRec(int[] nums, int lo, int hi)&#123;<br>        if(lo == hi)<br>            return nums[lo];<br>        <br>        int mid = (hi-lo)/2 +lo;<br><br>        int left = majorityElementRec(nums, lo, mid);<br>        int right = majorityElementRec(nums, mid+1, hi);<br><br>        if(left == right)&#123;<br>            return left;<br>        &#125;<br><br>        int leftCount = countInRange(nums, left, lo, hi);<br>        int rightCount = countInRange(nums, right, lo, hi);<br><br>        return leftCount&gt;rightCount?left:right;<br>    &#125;<br><br>    public int majorityElement(int[] nums)&#123;<br>        return majorityElementRec(nums, 0, nums.length-1);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="240-搜索二维矩阵"><a href="#240-搜索二维矩阵" class="headerlink" title="240. 搜索二维矩阵||"></a>240. 搜索二维矩阵||</h2><p>编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：</p>
+<p>每行的元素从左到右升序排列。<br>每列的元素从上到下升序排列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public boolean searchMatrix(int[][] matrix, int target) &#123;<br>        int m = matrix.length, n = matrix[0].length;<br><br>        int x = 0, y = n-1;<br>        while(x&lt;m&amp;&amp;y&gt;=0)&#123;<br>            if(matrix[x][y]==target)<br>                return true;<br>            if(matrix[x][y]&gt;target)&#123;<br>                --y;<br>            &#125;else&#123;<br>                ++x;<br>            &#125;<br>        &#125;<br>        return false;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="84-柱状图中的最大矩形"><a href="#84-柱状图中的最大矩形" class="headerlink" title="84. 柱状图中的最大矩形"></a>84. 柱状图中的最大矩形</h2><p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int largestRectangleArea(int[] heights) &#123;<br>        Deque&lt;Integer&gt; stack = new ArrayDeque&lt;&gt;();<br>        int res = 0;<br>        stack.push(-1);<br><br>        for(int i=0;i&lt;heights.length;i++)&#123;<br>            while(stack.peek()!=-1&amp;&amp;heights[i]&lt;=heights[stack.peek()])&#123;<br>                int height = heights[stack.pop()];<br>                int width = i-stack.peek()-1;<br>                res = Math.max(res, height*width);<br>            &#125;<br>            stack.push(i);<br>        &#125;<br><br>        while(stack.peek()!=-1)&#123;<br>            int height = heights[stack.pop()];<br>            int width = heights.length-stack.peek()-1;<br>            res = Math.max(res, height*width);<br>        &#125;<br><br>        return res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="547-省份数量"><a href="#547-省份数量" class="headerlink" title="547. 省份数量"></a>547. 省份数量</h2><p>有 n 个城市，其中一些彼此相连，另一些没有相连。如果城市 a 与城市 b 直接相连，且城市 b 与城市 c 直接相连，那么城市 a 与城市 c 间接相连。</p>
+<p>省份 是一组直接或间接相连的城市，组内不含其他没有相连的城市。</p>
+<p>给你一个 n x n 的矩阵 isConnected ，其中 isConnected[i][j] &#x3D; 1 表示第 i 个城市和第 j 个城市直接相连，而 isConnected[i][j] &#x3D; 0 表示二者不直接相连。</p>
+<p>返回矩阵中 省份 的数量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int findCircleNum(int[][] isConnected) &#123;<br>        int[] parent = new int[isConnected.length];<br>        <br>        int n = isConnected.length;<br>        for(int i=0;i&lt;n;i++)&#123;<br>            parent[i] = i;<br>        &#125;<br><br>        for(int i =0;i&lt;n;i++)&#123;<br>            for(int j = i+1;j&lt;n;j++)&#123;<br>                if(isConnected[i][j]==1)&#123;<br>                    union(parent, i, j);<br>                &#125;<br>            &#125;<br>        &#125;<br>        int pro = 0;<br>        for(int i =0;i&lt;n;i++)&#123;<br>            if(parent[i]==i)&#123;<br>                pro++;<br>            &#125;<br>        &#125;<br><br>        return pro;<br>    &#125;<br><br>    public void union(int[] parent, int index1, int index2)&#123;<br>        parent[find(parent, index1)] = find(parent, index2);<br>    &#125;<br><br>    public int find(int[] parent, int index)&#123;<br>        if(parent[index]!=index)&#123;<br>            parent[index] = find(parent, parent[index]);<br>        &#125;<br><br>        return parent[index];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>DFS</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int findCircleNum(int[][] isConnected) &#123;<br>        int pro = 0;<br>        int n = isConnected.length;<br>        boolean[] visited = new boolean[n];<br><br>        for(int i = 0;i&lt;n;i++)&#123;<br>            if(!visited[i])&#123;<br>                dfs(isConnected, visited, n, i);<br>                pro++;<br>            &#125;<br>        &#125;<br><br>        return pro;<br>    &#125;<br><br>    public void dfs(int[][] isConnected, boolean[] visited, int n, int i)&#123;<br>        for(int j=0;j&lt;n;j++)&#123;<br>            if(isConnected[i][j]==1 &amp;&amp; !visited[j])&#123;<br>                visited[j]=true;<br>                dfs(isConnected, visited, n, j);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>BFS</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int findCircleNum(int[][] isConnected) &#123;<br>        int n = isConnected.length;<br>        boolean[] visited = new boolean[n];<br>        int pro = 0;<br><br>        Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();<br>        for(int i =0;i&lt;n;i++)&#123;<br>            if(!visited[i])&#123;<br>                queue.offer(i);<br>                while(!queue.isEmpty())&#123;<br>                    int j = queue.poll();<br>                    visited[j]=true;<br>                    for(int k = 0;k&lt;n;k++)&#123;<br>                        if(isConnected[j][k]==1 &amp;&amp; !visited[k])&#123;<br>                            queue.offer(k);<br>                        &#125;<br>                    &#125;<br>                &#125;<br>                pro++;<br>            &#125;<br>        &#125;<br><br>        return pro;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200. 岛屿数量"></a>200. 岛屿数量</h2><p>给你一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，请你计算网格中岛屿的数量。</p>
+<p>岛屿总是被水包围，并且每座岛屿只能由水平方向和&#x2F;或竖直方向上相邻的陆地连接形成。</p>
+<p>此外，你可以假设该网格的四条边均被水包围。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int numIslands(char[][] grid) &#123;<br>        int n = grid.length;<br>        int m = grid[0].length;<br>        int count = 0;<br><br>        for(int i=0;i&lt;n;i++)&#123;<br>            for(int j=0;j&lt;m;j++)&#123;<br>                if(grid[i][j]==&#x27;1&#x27;)&#123;<br>                    bfs(grid, i, j);<br>                    count++;<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        return count;<br>    &#125;<br><br>    public void bfs(char[][] grid, int i, int j)&#123;<br>        Queue&lt;int[]&gt; queue = new LinkedList&lt;&gt;();<br>        queue.add(new int[] &#123;i, j&#125;);<br><br>        while(!queue.isEmpty())&#123;<br>            int[] cur = queue.remove();<br>            i = cur[0];<br>            j = cur[1];<br>            if(i&gt;=0&amp;&amp;i&lt;grid.length &amp;&amp; j&gt;=0 &amp;&amp; j&lt;grid[0].length &amp;&amp; grid[i][j]==&#x27;1&#x27;)&#123;<br>                grid[i][j] = &#x27;0&#x27;;<br>                queue.add(new int[] &#123;i+1, j&#125;);<br>                queue.add(new int[] &#123;i-1, j&#125;);<br>                queue.add(new int[] &#123;i, j-1&#125;);<br>                queue.add(new int[] &#123;i, j+1&#125;);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="684-冗余连接"><a href="#684-冗余连接" class="headerlink" title="684. 冗余连接"></a>684. 冗余连接</h2><p>树可以看成是一个连通且 无环 的 无向 图。</p>
+<p>给定往一棵 n 个节点 (节点值 1～n) 的树中添加一条边后的图。添加的边的两个顶点包含在 1 到 n 中间，且这条附加的边不属于树中已存在的边。图的信息记录于长度为 n 的二维数组 edges ，edges[i] &#x3D; [ai, bi] 表示图中在 ai 和 bi 之间存在一条边。</p>
+<p>请找出一条可以删去的边，删除后可使得剩余部分是一个有着 n 个节点的树。如果有多个答案，则返回数组 edges 中最后出现的那个。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int[] findRedundantConnection(int[][] edges) &#123;<br>        int n = edges.length;<br>        int[] parent = new int[n+1];<br>        for(int i=1;i&lt;=n;i++)&#123;<br>            parent[i]=i;<br>        &#125;<br><br>        for(int i = 0;i&lt;n;i++)&#123;<br>            int[] edge = edges[i];<br>            int node1 = edge[0], node2 = edge[1];<br>            if(find(parent, node1)!=find(parent, node2))&#123;<br>                union(parent, node1, node2);<br>            &#125;else&#123;<br>                return edge;<br>            &#125;<br>        &#125;<br><br>        return new int[0];<br>    &#125;<br><br>    public void union(int[] parent, int index1, int index2)&#123;<br>        parent[find(parent, index1)] = find(parent, index2);<br>    &#125;<br><br>    public int find(int[] parent, int index)&#123;<br>        if(parent[index]!=index)&#123;<br>            parent[index] = find(parent, parent[index]);<br>        &#125;<br>        return parent[index];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a>209. 长度最小的子数组</h2><p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
+<p>找出该数组中满足其总和大于等于 target 的长度最小的 连续<br>子数组<br> [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int minSubArrayLen(int target, int[] nums) &#123;<br>        int n = nums.length;<br>        int length = Integer.MAX_VALUE;<br>        int sum = 0;<br>        int end = 0, start = 0;<br>        while(end&lt;n)&#123;<br>            sum += nums[end];<br>            while(sum&gt;=target)&#123;<br>                length = Math.min(length, end-start+1);<br>                sum -= nums[start];<br>                start++;<br>            &#125;<br>            end++;<br>        &#125;<br><br>        return length == Integer.MAX_VALUE?0:length;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a>3. 无重复字符的最长子串</h2><p>给定一个字符串 s ，请你找出其中不含有重复字符的 最长<br>子串的长度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int lengthOfLongestSubstring(String s) &#123;<br>        char[] ch = s.toCharArray();<br>        int n = s.length();<br>        int res = 0;<br>        for(int i =0;i&lt;n;i++)&#123;<br>            Set&lt;Character&gt; hset = new HashSet&lt;&gt;();<br>            int j = i+1;<br>            hset.add(ch[i]);<br>            while(j&lt;n&amp;&amp;!hset.contains(ch[j]))&#123;<br>                hset.add(ch[j]);<br>                j++;<br>            &#125;<br>            res = Math.max(res, hset.size());<br>        &#125;<br><br>        return res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1004-最大连续1的个数"><a href="#1004-最大连续1的个数" class="headerlink" title="1004. 最大连续1的个数"></a>1004. 最大连续1的个数</h2><p>给定一个二进制数组 nums 和一个整数 k，如果可以翻转最多 k 个 0 ，则返回 数组中连续 1 的最大个数 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int longestOnes(int[] nums, int k) &#123;<br>        int n = nums.length;<br>        int res = 0;<br>        int count = 0;<br>        int left = 0;<br>        int right = 0;<br>        while(right&lt;n)&#123;<br>            if(nums[right]==0)<br>                count++;<br>            right++;<br>            while(count&gt;k)&#123;<br>                if(nums[left]==0)<br>                    count--;<br>                left++;<br>            &#125;<br>            res = Math.max(res,right-left);<br>        &#125;<br><br>        return res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1208-尽可能使字符串相等"><a href="#1208-尽可能使字符串相等" class="headerlink" title="1208. 尽可能使字符串相等"></a>1208. 尽可能使字符串相等</h2><p>给你两个长度相同的字符串，s 和 t。</p>
+<p>将 s 中的第 i 个字符变到 t 中的第 i 个字符需要 |s[i] - t[i]| 的开销（开销可能为 0），也就是两个字符的 ASCII 码值的差的绝对值。</p>
+<p>用于变更字符串的最大预算是 maxCost。在转化字符串时，总开销应当小于等于该预算，这也意味着字符串的转化可能是不完全的。</p>
+<p>如果你可以将 s 的子字符串转化为它在 t 中对应的子字符串，则返回可以转化的最大长度。</p>
+<p>如果 s 中没有子字符串可以转化成 t 中对应的子字符串，则返回 0。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int equalSubstring(String s, String t, int maxCost) &#123;<br>        int n = s.length();<br>        int res = 0;<br>        int left = 0;<br>        int right = 0;<br>        int sum = 0;<br>        int[] diff = new int[n];<br>        for(int i=0;i&lt;n;i++)&#123;<br>            diff[i] = Math.abs(s.charAt(i)-t.charAt(i));<br>        &#125;<br><br>        while(right&lt;n)&#123;<br>            sum += diff[right];<br>            right++;<br>            while(sum&gt;maxCost)&#123;<br>                sum -= diff[left];<br>                left++;<br>            &#125;<br>            res = Math.max(res, right-left);<br>        &#125;<br><br>        return res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="724-寻找数组的中心下标"><a href="#724-寻找数组的中心下标" class="headerlink" title="724. 寻找数组的中心下标"></a>724. 寻找数组的中心下标</h2><p>给你一个整数数组 nums ，请计算数组的 中心下标 。</p>
+<p>数组 中心下标 是数组的一个下标，其左侧所有元素相加的和等于右侧所有元素相加的和。</p>
+<p>如果中心下标位于数组最左端，那么左侧数之和视为 0 ，因为在下标的左侧不存在元素。这一点对于中心下标位于数组最右端同样适用。</p>
+<p>如果数组有多个中心下标，应该返回 最靠近左边 的那一个。如果数组不存在中心下标，返回 -1 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int pivotIndex(int[] nums) &#123;<br>        int n = nums.length;<br>        int[] pre = new int[n];<br>        int[] after = new int[n];<br>        pre[0] = nums[0];<br>        after[n-1] = nums[n-1];<br>        for(int i =1;i&lt;n;i++)&#123;<br>            pre[i] += pre[i-1] + nums[i];<br>        &#125;<br>        for(int i = n-2;i&gt;=0;i--)&#123;<br>            after[i] += after[i+1] + nums[i];<br>        &#125;<br><br>        for(int i = 0;i&lt;n;i++)&#123;<br>            if(pre[i]-nums[i] == after[i]-nums[i])<br>                return i;<br>        &#125;<br><br>        return -1;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="560-和为k的子数组"><a href="#560-和为k的子数组" class="headerlink" title="560. 和为k的子数组"></a>560. 和为k的子数组</h2><p>给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。</p>
+<p>子数组是数组中元素的连续非空序列。</p>
+<p>暴力</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">public class Solution &#123;<br>    public int subarraySum(int[] nums, int k) &#123;<br>        int count = 0;<br>        for (int start = 0; start &lt; nums.length; ++start) &#123;<br>            int sum = 0;<br>            for (int end = start; end &gt;= 0; --end) &#123;<br>                sum += nums[end];<br>                if (sum == k) &#123;<br>                    count++;<br>                &#125;<br>            &#125;<br>        &#125;<br>        return count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>前缀和+哈希表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">class Solution &#123;<br>    public int subarraySum(int[] nums, int k) &#123;<br>        int n = nums.length;<br>        int count = 0, pre = 0;<br>        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();<br>        map.put(0, 1);<br>        for(int i=0;i&lt;n;i++)&#123;<br>            pre += nums[i];<br>            if(map.containsKey(pre-k))&#123;<br>                count += map.get(pre-k);<br>            &#125;<br>            map.put(pre, map.getOrDefault(pre, 0)+1);<br>        &#125;<br><br>        return count;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2024/01/17/150%E9%A2%98day1/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>150题</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B-JUC/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      多线程&JUC
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tag">#算法</a>
+
+</div>
+  <div class="realated__body">
+    
+      <div class="null"><div class="null-item"><div class="null-title"><a href="/2024/01/07/常用算法/" title="常用算法" rel="bookmark">常用算法</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/17/150题day1/" title="150题" rel="bookmark">150题</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/15/IO流/" title="IO流" rel="bookmark">IO流</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/15/Stream流/" title="Stream流" rel="bookmark">Stream流</a></div></div></div>
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">海</div>
+              
+                <div class="matts">内</div>
+              
+                <div class="matts">存</div>
+              
+                <div class="matts">知</div>
+              
+                <div class="matts">己</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">天</div>
+              
+                <div class="matts">涯</div>
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">比</div>
+              
+                <div class="matts">邻</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://jtzhpf.github.io">帅哥</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://nuistgy.github.io">kami</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:dzc2000919@gmail.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/dzc2000">dzc2000</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:dzc2000919@gmail.com">dzc2000919@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://dzc2000.github.io">饿了</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>

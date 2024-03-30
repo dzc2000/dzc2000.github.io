@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        数据库面试题 | 饿了
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/java">技术</a>
+            
+              <a class="nav-menu-item" href="/paper">论文</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">数据库面试题</div>
+        <div class="post-info">
+          
+  <a href="/tags/%E9%9D%A2%E8%AF%95/" class="post-tag">#面试</a>
+
+
+          <span class="post-date">2024-03-29</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><ul>
+<li>1NF(第一范式)：属性不可再分。</li>
+<li>2NF(第二范式)：1NF 的基础之上，消除了非主属性对于码的部分函数依赖。</li>
+<li>3NF(第三范式)：3NF 在 2NF 的基础之上，消除了非主属性对于码的传递函数依赖 。</li>
+</ul>
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><p>我们可以把存储过程看成是一些 SQL 语句的集合，中间加了点逻辑控制语句。存储过程在业务比较复杂的时候是非常实用的，比如很多时候我们完成一个操作可能需要写一大串 SQL 语句，这时候我们就可以写有一个存储过程，这样也方便了我们下一次的调用。存储过程一旦调试完成通过后就能稳定运行，另外，使用存储过程比单纯 SQL 语句执行要快，因为存储过程是预编译过的。</p>
+<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><p>NoSQL（Not Only SQL 的缩写）泛指非关系型的数据库，主要针对的是键值、文档以及图形类型数据存储。并且，NoSQL 数据库天生支持分布式，数据冗余和数据分片等特性，旨在提供可扩展的高可用高性能数据存储解决方案。一个常见的误解是 NoSQL 数据库或非关系型数据库不能很好地存储关系型数据。NoSQL 数据库可以存储关系型数据—它们与关系型数据库的存储方式不同。NoSQL 数据库代表：HBase、Cassandra、MongoDB、Redis。</p>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403291647033.png"></p>
+<h2 id="连接类型"><a href="#连接类型" class="headerlink" title="连接类型"></a>连接类型</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403291652873.png"></p>
+<h2 id="MySQL索引"><a href="#MySQL索引" class="headerlink" title="MySQL索引"></a>MySQL索引</h2><p>索引是一种用于快速查询和检索数据的数据结构，其本质可以看成是一种排序好的数据结构。索引的作用就相当于书的目录。打个比方: 我们在查字典的时候，如果没有目录，那我们就只能一页一页的去找我们需要查的那个字，速度很慢。如果有目录了，我们只需要先去目录里查找字的位置，然后直接翻到那一页就行了。</p>
+<p>优点：使用索引可以大大加快 数据的检索速度（大大减少检索的数据量）, 这也是创建索引的最主要的原因。通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</p>
+<p>缺点：创建索引和维护索引需要耗费许多时间。当对表中的数据进行增删改的时候，如果数据有索引，那么索引也需要动态的修改，会降低 SQL 执行效率。索引需要使用物理文件存储，也会耗费一定空间.</p>
+<h2 id="索引底层数据结构"><a href="#索引底层数据结构" class="headerlink" title="索引底层数据结构"></a>索引底层数据结构</h2><h3 id="Hash表"><a href="#Hash表" class="headerlink" title="Hash表"></a>Hash表</h3><p>哈希表是键值对的集合，通过键(key)即可快速取出对应的值(value)，因此哈希表可以快速检索数据（接近 O（1））。为何能够通过 key 快速取出 value 呢？ 原因在于 哈希算法（也叫散列算法）。通过哈希算法，我们可以快速找到 key 对应的 index，找到了 index 也就找到了对应的 value。</p>
+<p>但是！哈希算法有个 Hash 冲突 问题，也就是说多个不同的 key 最后得到的 index 相同。通常情况下，我们常用的解决办法是 链地址法。链地址法就是将哈希冲突数据存放在链表中。就比如 JDK1.8 之前 HashMap 就是通过链地址法来解决哈希冲突的。不过，JDK1.8 以后HashMap为了减少链表过长的时候搜索时间过长引入了红黑树。</p>
+<p>###红黑树</p>
+<p>红黑树是一种自平衡二叉查找树，通过在插入和删除节点时进行颜色变换和旋转操作，使得树始终保持平衡状态，它具有以下特点：</p>
+<ul>
+<li>每个节点非红即黑；根节点总是黑色的；</li>
+<li>每个叶子节点都是黑色的空节点（NIL 节点）；</li>
+<li>如果节点是红色的，则它的子节点必须是黑色的（反之不一定）；</li>
+<li>从任意节点到它的叶子节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）。</li>
+</ul>
+<p>和 AVL 树不同的是，红黑树并不追求严格的平衡，而是大致的平衡。正因如此，红黑树的查询效率稍有下降，因为红黑树的平衡性相对较弱，可能会导致树的高度较高，这可能会导致一些数据需要进行多次磁盘 IO 操作才能查询到，这也是 MySQL 没有选择红黑树的主要原因。</p>
+<p>###B树&amp;B+树</p>
+<p>B 树也称 B-树,全称为 多路平衡查找树 ，B+ 树是 B 树的一种变体。B 树和 B+树中的 B 是 Balanced （平衡）的意思。目前大部分数据库系统及文件系统都采用 B-Tree 或其变种 B+Tree 作为索引结构。</p>
+<p>B 树&amp; B+树两者有何异同呢？</p>
+<ul>
+<li>B 树的所有节点既存放键(key) 也存放数据(data)，而 B+树只有叶子节点存放 key 和 data，其他内节点只存放 key。</li>
+<li>B 树的叶子节点都是独立的;B+树的叶子节点有一条引用链指向与它相邻的叶子节点。</li>
+<li>B 树的检索的过程相当于对范围内的每个节点的关键字做二分查找，可能还没有到达叶子节点，检索就结束了。而 B+树的检索效率就很稳定了，任何查找都是从根节点到叶子节点的过程，叶子节点的顺序检索很明显。</li>
+<li>在 B 树中进行范围查询时，首先找到要查找的下限，然后对 B 树进行中序遍历，直到找到查找的上限；而 B+树的范围查询，只需要对链表进行遍历即可。综上，B+树与 B 树相比，具备更少的 IO 次数、更稳定的查询效率和更适于范围查询这些优势。</li>
+</ul>
+<h2 id="索引类型总结"><a href="#索引类型总结" class="headerlink" title="索引类型总结"></a>索引类型总结</h2><ul>
+<li>BTree 索引：MySQL 里默认和最常用的索引类型。只有叶子节点存储 value，非叶子节点只有指针和 key。存储引擎 MyISAM 和 InnoDB 实现 BTree 索引都是使用 B+Tree，但二者实现方式不一样（前面已经介绍了）。</li>
+<li>哈希索引：类似键值对的形式，一次即可定位。</li>
+<li>RTree 索引：一般不会使用，仅支持 geometry 数据类型，优势在于范围查找，效率较低，通常使用搜索引擎如 ElasticSearch 代替。全文索引：对文本的内容进行分词，进行搜索。目前只有 CHAR、VARCHAR ，TEXT 列上可以创建全文索引。一般不会使用，效率较低，通常使用搜索引擎如 ElasticSearch 代替。</li>
+</ul>
+<p>按照底层存储方式角度划分：</p>
+<ul>
+<li>聚簇索引（聚集索引）：索引结构和数据一起存放的索引，InnoDB 中的主键索引就属于聚簇索引。</li>
+<li>非聚簇索引（非聚集索引）：索引结构和数据分开存放的索引，二级索引(辅助索引)就属于非聚簇索引。MySQL 的 MyISAM 引擎，不管主键还是非主键，使用的都是非聚簇索引。</li>
+</ul>
+<p>按照应用维度划分：</p>
+<ul>
+<li><p>主键索引：加速查询 + 列值唯一（不可以有 NULL）+ 表中只有一个。</p>
+</li>
+<li><p>普通索引：仅加速查询。唯一索引：加速查询 + 列值唯一（可以有 NULL）。</p>
+</li>
+<li><p>覆盖索引：一个索引包含（或者说覆盖）所有需要查询的字段的值。</p>
+</li>
+<li><p>联合索引：多列值组成一个索引，专门用于组合搜索，其效率大于索引合并。</p>
+</li>
+<li><p>全文索引：对文本的内容进行分词，进行搜索。目前只有 CHAR、VARCHAR ，TEXT 列上可以创建全文索引。一般不会使用，效率较低，通常使用搜索引擎如 ElasticSearch 代替。</p>
+</li>
+<li><p>隐藏索引：也称为不可见索引，不会被优化器使用，但是仍然需要维护，通常会软删除和灰度发布的场景中使用。主键不能设置为隐藏（包括显式设置或隐式设置）。</p>
+</li>
+<li><p>降序索引：之前的版本就支持通过 desc 来指定索引为降序，但实际上创建的仍然是常规的升序索引。直到 MySQL 8.x 版本才开始真正支持降序索引。另外，在 MySQL 8.x 版本中，不再对 GROUP BY 语句进行隐式排序。</p>
+</li>
+<li><p>函数索引：从 MySQL 8.0.13 版本开始支持在索引中使用函数或者表达式的值，也就是在索引中可以包含函数或者表达式。</p>
+</li>
+</ul>
+<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><p>选择合适的字段创建索引</p>
+<ul>
+<li>不为 NULL 的字段：索引字段的数据应该尽量不为 NULL，因为对于数据为 NULL 的字段，数据库较难优化。如果字段频繁被查询，但又避免不了为 NULL，建议使用 0,1,true,false 这样语义较为清晰的短值或短字符作为替代。</li>
+<li>被频繁查询的字段：我们创建索引的字段应该是查询操作非常频繁的字段。</li>
+<li>被作为条件查询的字段：被作为 WHERE 条件查询的字段，应该被考虑建立索引。</li>
+<li>频繁需要排序的字段：索引已经排序，这样查询可以利用索引的排序，加快排序查询时间。</li>
+<li>被经常频繁用于连接的字段：经常用于连接的字段可能是一些外键列，对于外键列并不一定要建立外键，只是说该列涉及到表与表的关系。对于频繁被连接查询的字段，可以考虑建立索引，提高多表连接查询的效率。</li>
+</ul>
+<p>###被频繁更新的字段应该慎重建立索引</p>
+<p>虽然索引能带来查询上的效率，但是维护索引的成本也是不小的。 如果一个字段不被经常查询，反而被经常修改，那么就更不应该在这种字段上建立索引了。</p>
+<p>###尽可能的考虑建立联合索引而不是单列索引</p>
+<p>因为索引是需要占用磁盘空间的，可以简单理解为每个索引都对应着一颗 B+树。如果一个表的字段过多，索引过多，那么当这个表的数据达到一个体量后，索引占用的空间也是很多的，且修改索引时，耗费的时间也是较多的。如果是联合索引，多个字段在一个索引上，那么将会节约很大磁盘空间，且修改数据的操作效率也会提升。</p>
+<p>###注意避免冗余索引</p>
+<p>冗余索引指的是索引的功能相同，能够命中索引(a, b)就肯定能命中索引(a) ，那么索引(a)就是冗余索引。如（name,city ）和（name ）这两个索引就是冗余索引，能够命中前者的查询肯定是能够命中后者的 在大多数情况下，都应该尽量扩展已有的索引而不是创建新索引。</p>
+<p>###字符串类型的字段使用前缀索引代替普通索引</p>
+<p>前缀索引仅限于字符串类型，较普通索引会占用更小的空间，所以可以考虑使用前缀索引带替普通索引。</p>
+<h3 id="避免索引失效"><a href="#避免索引失效" class="headerlink" title="避免索引失效"></a>避免索引失效</h3><ul>
+<li>SELECT * 不会直接导致索引失效（如果不走索引大概率是因为 where 查询范围过大导致的），但它可能会带来一些其他的性能问题比如造成网络传输和数据处理的浪费、无法使用索引覆盖;</li>
+<li>创建了组合索引，但查询条件未遵守最左匹配原则;</li>
+<li>在索引列上进行计算、函数、类型转换等操作;</li>
+<li>以 % 开头的 LIKE 查询比如 LIKE ‘%abc’;</li>
+<li>查询条件中使用 OR，且 OR 的前后条件中有一个列没有索引，涉及的索引都不会被使用到;</li>
+<li>IN 的取值范围较大时会导致索引失效，走全表扫描(NOT IN 和 IN 的失效场景相同);发生隐式转换open in new window;</li>
+</ul>
+<p>###删除长期未使用的索引删除长期未使用的索引</p>
+<p>不用的索引的存在会造成不必要的性能损耗。MySQL 5.7 可以通过查询 sys 库的 schema_unused_indexes 视图来查询哪些索引从未被使用。</p>
+<h2 id="CHAR与VARCHAR的区别"><a href="#CHAR与VARCHAR的区别" class="headerlink" title="CHAR与VARCHAR的区别"></a>CHAR与VARCHAR的区别</h2><p>CHAR 和 VARCHAR 是最常用到的字符串类型，两者的主要区别在于：CHAR 是定长字符串，VARCHAR 是变长字符串。CHAR 在存储时会在右边填充空格以达到指定的长度，检索时会去掉空格；VARCHAR 在存储时需要使用 1 或 2 个额外字节记录字符串的长度，检索时不需要处理。CHAR 更适合存储长度较短或者长度都差不多的字符串，例如 Bcrypt 算法、MD5 算法加密后的密码、身份证号码。VARCHAR 类型适合存储长度不确定或者差异较大的字符串，例如用户昵称、文章标题等。CHAR(M) 和 VARCHAR(M) 的 M 都代表能够保存的字符数的最大值，无论是字母、数字还是中文，每个都只占用一个字符。</p>
+<h2 id="MySQL基础架构"><a href="#MySQL基础架构" class="headerlink" title="MySQL基础架构"></a>MySQL基础架构</h2><p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403291942862.png"></p>
+<h2 id="InnoDB（支持事务）"><a href="#InnoDB（支持事务）" class="headerlink" title="InnoDB（支持事务）"></a>InnoDB（支持事务）</h2><p>MySQL 存储引擎采用的是 插件式架构 ，支持多种存储引擎，我们甚至可以为不同的数据库表设置不同的存储引擎以适应不同场景的需要。存储引擎是基于表的，而不是数据库。</p>
+<p>InnoDB 提供事务支持，实现了 SQL 标准定义了四个隔离级别，具有提交(commit)和回滚(rollback)事务的能力。并且，InnoDB 默认使用的 REPEATABLE-READ（可重读）隔离级别是可以解决幻读问题发生的（基于 MVCC 和 Next-Key Lock）。</p>
+<h2 id="MySQL日志"><a href="#MySQL日志" class="headerlink" title="MySQL日志"></a>MySQL日志</h2><h2 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h2><p>事务是逻辑上的一组操作，要么都执行，要么都不执行。</p>
+<p>四大特性：ACID</p>
+<ul>
+<li>原子性（Atomicity）：事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；</li>
+<li>一致性（Consistency）：执行事务前后，数据保持一致，例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不变的；</li>
+<li>隔离性（Isolation）：并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</li>
+<li>持久性（Durability）：一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</li>
+</ul>
+<p><img src="https://dzc2000919.oss-cn-shanghai.aliyuncs.com/images/202403291952863.png"></p>
+<h2 id="并发事务带来了哪些问题"><a href="#并发事务带来了哪些问题" class="headerlink" title="并发事务带来了哪些问题"></a>并发事务带来了哪些问题</h2><ol>
+<li>脏读：一个事务读取数据并且对数据进行了修改，这个修改对其他事务来说是可见的，即使当前事务没有提交。这时另外一个事务读取了这个还未提交的数据，但第一个事务突然回滚，导致数据并没有被提交到数据库，那第二个事务读取到的就是脏数据，这也就是脏读的由来。</li>
+<li>丢失修改：在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。</li>
+<li>不可重读：指在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务也访问该数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到的数据是不一样的情况，因此称为不可重复读。</li>
+<li>幻读：幻读与不可重复读类似。它发生在一个事务读取了几行数据，接着另一个并发事务插入了一些数据时。在随后的查询中，第一个事务就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。</li>
+</ol>
+<h3 id="不可重复读和幻读有什么区别？"><a href="#不可重复读和幻读有什么区别？" class="headerlink" title="不可重复读和幻读有什么区别？"></a>不可重复读和幻读有什么区别？</h3><p>不可重复读的重点是内容修改或者记录减少比如多次读取一条记录发现其中某些记录的值被修改；<br>幻读的重点在于记录新增比如多次执行同一条查询语句（DQL）时，发现查到的记录增加了。</p>
+<h2 id="并发事务的控制方式"><a href="#并发事务的控制方式" class="headerlink" title="并发事务的控制方式"></a>并发事务的控制方式</h2><p>MySQL 中并发事务的控制方式无非就两种：锁 和 MVCC。锁可以看作是悲观控制的模式，多版本并发控制（MVCC，Multiversion concurrency control）可以看作是乐观控制的模式。</p>
+<p><strong>锁</strong> </p>
+<p>控制方式下会通过锁来显示控制共享资源而不是通过调度手段，MySQL 中主要是通过 读写锁 来实现并发控制。</p>
+<ul>
+<li>共享锁（S 锁）：又称读锁，事务在读取记录的时候获取共享锁，允许多个事务同时获取（锁兼容）。</li>
+<li>排他锁（X 锁）：又称写锁&#x2F;独占锁，事务在修改记录的时候获取排他锁，不允许多个事务同时获取。如果一个记录已经被加了排他锁，那其他事务不能再对这条记录加任何类型的锁（锁不兼容）。</li>
+</ul>
+<p>读写锁可以做到读读并行，但是无法做到写读、写写并行。另外，根据根据锁粒度的不同，又被分为 表级锁(table-level locking) 和 行级锁(row-level locking) 。InnoDB 不光支持表级锁，还支持行级锁，默认为行级锁。</p>
+<p>MVCC 是多版本并发控制方法，即对一份数据会存储多个版本，通过事务的可见性来保证事务能看到自己应该看到的版本。通常会有一个全局的版本分配器来为每一行数据设置版本号，版本号是唯一的。</p>
+<p>MVCC 在 MySQL 中实现所依赖的手段主要是: 隐藏字段、read view、undo log。undo log : undo log 用于记录某行数据的多个版本的数据。read view 和 隐藏字段 : 用来判断当前版本数据的可见性。</p>
+<h2 id="MVCC-多版本并发控制"><a href="#MVCC-多版本并发控制" class="headerlink" title="MVCC 多版本并发控制"></a>MVCC 多版本并发控制</h2><p>MVCC 是一种并发控制机制，用于在多个并发事务同时读写数据库时保持数据的一致性和隔离性。它是通过在每个数据行上维护多个版本的数据来实现的。当一个事务要对数据库中的数据进行修改时，MVCC 会为该事务创建一个数据快照，而不是直接修改实际的数据行。</p>
+<p>MVCC 通过创建数据的多个版本和使用快照读取来实现并发控制。读操作使用旧版本数据的快照，写操作创建新版本，并确保原始版本仍然可用。这样，不同的事务可以在一定程度上并发执行，而不会相互干扰，从而提高了数据库的并发性能和数据一致性。</p>
+<h2 id="一致性非锁定读和锁定读"><a href="#一致性非锁定读和锁定读" class="headerlink" title="一致性非锁定读和锁定读"></a>一致性非锁定读和锁定读</h2><p>对于 一致性非锁定读（Consistent Nonlocking Reads）open in new window的实现，通常做法是加一个版本号或者时间戳字段，在更新数据的同时版本号 + 1 或者更新时间戳。查询时，将当前可见的版本号与对应记录的版本号进行比对，如果记录的版本小于可见版本，则表示该记录可见在 InnoDB 存储引擎中，多版本控制 (multi versioning)open in new window 就是对非锁定读的实现。如果读取的行正在执行 DELETE 或 UPDATE 操作，这时读取操作不会去等待行上锁的释放。相反地，InnoDB 存储引擎会去读取行的一个快照数据，对于这种读取历史数据的方式，我们叫它快照读 (snapshot read)</p>
+<h2 id="InnoDB对MVCC的实现"><a href="#InnoDB对MVCC的实现" class="headerlink" title="InnoDB对MVCC的实现"></a>InnoDB对MVCC的实现</h2><p>MVCC 的实现依赖于：隐藏字段、Read View、undo log。在内部实现中，InnoDB 通过数据行的 DB_TRX_ID 和 Read View 来判断数据的可见性，如不可见，则通过数据行的 DB_ROLL_PTR 找到 undo log 中的历史版本。每个事务读到的数据版本可能是不一样的，在同一个事务中，用户只能看到该事务创建 Read View 之前已经提交的修改和该事务本身做的修改</p>
+<h2 id="undo-log"><a href="#undo-log" class="headerlink" title="undo-log"></a>undo-log</h2><p>undo log 主要有两个作用：</p>
+<ul>
+<li>当事务回滚时用于将数据恢复到修改前的样子</li>
+<li>另一个作用是 MVCC ，当读取记录时，若该记录被其他事务占用或当前版本对该事务不可见，则可以通过 undo log 读取之前的版本数据，以此实现非锁定读</li>
+</ul>
+<h2 id="表规范"><a href="#表规范" class="headerlink" title="表规范"></a>表规范</h2><p>###所有表必须使用 InnoDB 存储引擎</p>
+<p>没有特殊要求（即 InnoDB 无法满足的功能如：列存储，存储空间数据等）的情况下，所有表必须使用 InnoDB 存储引擎（MySQL5.5 之前默认使用 Myisam，5.6 以后默认的为 InnoDB）。InnoDB 支持事务，支持行级锁，更好的恢复性，高并发下性能更好。</p>
+<p>###数据库和表的字符集统一使用 UTF8</p>
+<p>兼容性更好，统一字符集可以避免由于字符集转换产生的乱码，不同的字符集进行比较前需要进行转换会造成索引失效，如果数据库中有存储 emoji 表情的需要，字符集需要采用 utf8mb4 字符集。</p>
+<p>###所有表和字段都需要添加注释使用<br>comment 从句添加表和列的备注，从一开始就进行数据字典的维护</p>
+<p>###尽量控制单表数据量的大小，建议控制在 500 万以内</p>
+<p>500 万并不是 MySQL 数据库的限制，过大会造成修改表结构，备份，恢复都会有很大的问题。可以用历史数据归档（应用于日志数据），分库分表（应用于业务数据）等手段来控制数据量大小</p>
+<p>###谨慎使用 MySQL 分区表<br>分区表在物理上表现为多个文件，在逻辑上表现为一个表；<br>谨慎选择分区键，跨分区查询效率可能更低；建议采用物理分表的方式管理大数据。</p>
+<p>###经常一起使用的列放到一个表中<br>避免更多的关联操作。</p>
+<p>###禁止在表中建立预留字段</p>
+<p>预留字段的命名很难做到见名识义。预留字段无法确认存储的数据类型，所以无法选择合适的类型。对预留字段类型的修改，会对表进行锁定。</p>
+<p>###禁止在数据库中存储文件（比如图片）这类大的二进制数据</p>
+<p>在数据库中存储文件会严重影响数据库性能，消耗过多存储空间。文件（比如图片）这类大的二进制数据通常存储于文件服务器，数据库只存储文件地址信息。</p>
+<p>###不要被数据库范式所束缚<br>一般来说，设计关系数据库时需要满足第三范式，但为了满足第三范式，我们可能会拆分出多张表。而在进行查询时需要对多张表进行关联查询，有时为了提高查询效率，会降低范式的要求，在表中保存一定的冗余信息，也叫做反范式。但要注意反范式一定要适度。</p>
+<p>###禁止在线上做数据库压力测试禁止从开发环境,测试环境直接连接生产环境数据库</p>
+<h2 id="字段设计规范"><a href="#字段设计规范" class="headerlink" title="字段设计规范"></a>字段设计规范</h2><ul>
+<li><p>优先选择符合存储需要的最小的数据类型</p>
+</li>
+<li><p>避免使用 TEXT,BLOB 数据类型，最常见的 TEXT 类型可以存储 64k 的数据</p>
+</li>
+<li><p>避免使用 ENUM 类型</p>
+</li>
+<li><p>尽可能把所有列定义为 NOT NULL</p>
+</li>
+<li><p>一定不要用字符串存储日期</p>
+</li>
+<li><p>同财务相关的金额类数据必须使用 decimal 类型</p>
+</li>
+<li><p>单表不要包含过多字段</p>
+</li>
+</ul>
+<h2 id="索引设计规范"><a href="#索引设计规范" class="headerlink" title="索引设计规范"></a>索引设计规范</h2><ul>
+<li>限制每张表上的索引数量,建议单张表索引不超过 5 个</li>
+<li>禁止使用全文索引</li>
+<li>禁止给表中的每一列都建立单独的索引</li>
+<li>每个 InnoDB 表必须有个主键</li>
+<li>避免建立冗余索引和重复索引（增加了查询优化器生成执行计划的时间）</li>
+<li>对于频繁的查询优先考虑使用覆盖索引</li>
+</ul>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2024/03/30/java%E9%9D%A2%E8%AF%95%E9%A2%98/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>java面试题</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/03/21/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE%E7%9A%84RPC%E6%A1%86%E6%9E%B6/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      自定义协议的RPC框架
+    </a>
+  
+</div>
+
+    
+      <div class="related-post">
+  <div class="related__head">
+  <a href="/tags/%E9%9D%A2%E8%AF%95/" class="post-tag">#面试</a>
+
+</div>
+  <div class="realated__body">
+    
+      <div class="null"><div class="null-item"><div class="null-title"><a href="/2024/01/15/IO流/" title="IO流" rel="bookmark">IO流</a></div></div><div class="null-item"><div class="null-title"><a href="/2024/01/15/Stream流/" title="Stream流" rel="bookmark">Stream流</a></div></div></div>
+    
+  </div>
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              
+                <div class="matts">海</div>
+              
+                <div class="matts">内</div>
+              
+                <div class="matts">存</div>
+              
+                <div class="matts">知</div>
+              
+                <div class="matts">己</div>
+              
+            </div>
+          
+            <div class="foot-line">
+              
+                <div class="matts">天</div>
+              
+                <div class="matts">涯</div>
+              
+                <div class="matts">若</div>
+              
+                <div class="matts">比</div>
+              
+                <div class="matts">邻</div>
+              
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://jtzhpf.github.io">帅哥</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://nuistgy.github.io">kami</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:dzc2000919@gmail.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/dzc2000">dzc2000</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:dzc2000919@gmail.com">dzc2000919@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://dzc2000.github.io">饿了</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z"/>
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z"/>
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z"/>
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
